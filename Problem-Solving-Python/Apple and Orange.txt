@@ -1,0 +1,77 @@
+--------------------------------------- Problem ---------------------------------------
+Sam's house has an apple tree and an orange tree that yield an abundance of fruit. Using the information given below, determine the number of apples and oranges that land on Sam's house. 
+
+--------------------------------------- Solution ---------------------------------------
+
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'countApplesAndOranges' function below.
+#
+# The function accepts following parameters:
+#  1. INTEGER s
+#  2. INTEGER t
+#  3. INTEGER a
+#  4. INTEGER b
+#  5. INTEGER_ARRAY apples
+#  6. INTEGER_ARRAY oranges
+#
+
+def countApplesAndOranges(s, t, a, b, apples, oranges):
+    # Write your code here
+    house_left_pt = s
+    house_right_pt = t
+    apple_tree_pt = a
+    orange_tree_pt = b
+    apples_dist_list = apples
+    oranges_dist_list = oranges
+    total_apples = len(apples)
+    total_oranges = len(oranges)
+    apples_count = 0
+    oranges_count = 0
+    
+    # For apples that fall in range
+    for i in range(0, total_apples):
+        if (apples_dist_list[i] + apple_tree_pt) >= house_left_pt and (apples_dist_list[i] + apple_tree_pt) <= house_right_pt:
+            apples_count += 1
+            
+    # For oranges that fall in range
+    for i in range(0, total_oranges):
+        if (oranges_dist_list[i] + orange_tree_pt) >= house_left_pt and (oranges_dist_list[i] + orange_tree_pt) <= house_right_pt:
+            oranges_count += 1
+    
+    print(apples_count)
+    print(oranges_count)
+
+if __name__ == '__main__':
+    first_multiple_input = input().rstrip().split()
+
+    s = int(first_multiple_input[0])
+
+    t = int(first_multiple_input[1])
+
+    second_multiple_input = input().rstrip().split()
+
+    a = int(second_multiple_input[0])
+
+    b = int(second_multiple_input[1])
+
+    third_multiple_input = input().rstrip().split()
+
+    m = int(third_multiple_input[0])
+
+    n = int(third_multiple_input[1])
+
+    apples = list(map(int, input().rstrip().split()))
+
+    oranges = list(map(int, input().rstrip().split()))
+
+    countApplesAndOranges(s, t, a, b, apples, oranges)
